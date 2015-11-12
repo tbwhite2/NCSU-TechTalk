@@ -24,24 +24,36 @@ shinyUI(navbarPage("Lemon-AID",
                                         max = 100, value = 50),
                             sliderInput("odo", label = ("Vehicle Mileage"), min = 0, 
                                         max = 100, value = 50),
+                            selectInput("cartype", label = ("Car Style"), 
+                                        choices = list("loading" = 0), 
+                                        selected = 0),
                             selectInput("engine", label = ("Engine Type"), 
                                         choices = list("loading" = 0), 
                                         selected = 0),
-                            selectInput("auction", label = ("Auction Location"), 
+                            selectInput("national", label = ("Nationality of Car"), 
                                         choices = list("loading" = 0), 
                                         selected = 0),
                             radioButtons("door", label = ("Number of Doors"),
                                          choices = list("2" = "2D", "4" = "4D", "Other" = "O"), 
                                          selected = "2D"),
+                            selectInput("auction", label = ("Auction Location"), 
+                                        choices = list("loading" = 0), 
+                                        selected = 0),
+                         
                             actionButton("gogo",label = "Submit Car")
-                            ),
                             
+                            
+                         
+                            
+                            
+                   )),
+                   tabPanel("Auction Payment Amount",
+                            uiOutput("buypriceplot"),
+                            uiOutput("sellpriceplot"),
                             hr(),
-                            
-                            
+                            uiOutput("pricepoints1"),
                             hr(),
-                            fluidRow(column(3, verbatimTextOutput("value")))
-                            
-                   ),
-                   tabPanel("Auction Payment Amount")
+                            uiOutput("pricepoints2"),
+                            hr(),
+                            uiOutput("pricepoints3"))
 ))
