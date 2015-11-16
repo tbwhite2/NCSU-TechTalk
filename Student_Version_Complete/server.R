@@ -41,8 +41,8 @@ if(input$auction != "" &&
     mutate(engine3.8L = ifelse("3.8L" == input$engine,1,0)) %>% 
     mutate(engine4.0L = ifelse("4.0L" == input$engine,1,0)) %>% 
     mutate(engine5.4L = ifelse("5.4L" == input$engine,1,0)) %>% 
-    mutate(engineother = ifelse("3.5L" == input$engine,1,0)) %>% 
-    mutate(engine3.5L = ifelse("other" == input$engine,1,0)) %>%
+    mutate(engineother = ifelse("other" == input$engine,1,0)) %>% 
+    mutate(engine3.5L = ifelse("3.5L" == input$engine,1,0)) %>%
     mutate(AuctionMANHEIM = ifelse("MANHEIM" == input$auction,1,0)) %>% 
     mutate(AuctionOTHER = ifelse("OTHER" == input$auction,1,0)) %>%
     mutate(doors4D = ifelse("4D" == input$door,1,0)) %>% 
