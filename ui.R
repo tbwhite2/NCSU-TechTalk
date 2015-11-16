@@ -10,16 +10,6 @@ library(dygraphs)
 shinyUI(navbarPage("Lemon-AID",
                    tabPanel("Lemon Identification",
                             column(6,
-                            sliderInput("tolerance", label = h3("Lemon Tolerance"), min = 0, 
-                                        max = 100, value = 50),
-                            h4("With this tolerance you risk:"),
-                            hr(),
-                            uiOutput("lemonytoleranceFP"),
-                            hr(),
-                            uiOutput("lemonytoleranceFN"),
-                            uiOutput("lemonyResponse")
-                            ),
-                            column(6,
                             sliderInput("age", label = ("Vehicle Age"), min = 0, 
                                         max = 100, value = 50),
                             sliderInput("odo", label = ("Vehicle Mileage"), min = 0, 
@@ -40,16 +30,30 @@ shinyUI(navbarPage("Lemon-AID",
                                         choices = list("loading" = 0), 
                                         selected = 0),
                          
-                            actionButton("gogo",label = "Submit Car")
+                            actionButton("gogo",label = "Submit Car")),
+                            column(6,
+                                   sliderInput("tolerance", label = h3("Lemon Tolerance"), min = 0, 
+                                               max = 100, value = 50),
+                                   h4("With this tolerance you risk:"),
+                                   hr(),
+                                   uiOutput("lemonytoleranceFP"),
+                                   hr(),
+                                   uiOutput("lemonytoleranceFN"),
+                                   uiOutput("lemonyResponse")
+                            )
                             
                             
                          
                             
                             
-                   )),
+                   ),
                    tabPanel("Auction Payment Amount",
-                            uiOutput("buypriceplot"),
-                            uiOutput("sellpriceplot"),
+                            fluidRow(
+                              column(6,h3("Historic Price Density Plot")),
+                              column(6,h3("Historic Margin Densisty Plot"))),
+                           fluidRow(
+                             column(6,uiOutput("buypriceplot")),
+                             column(6,uiOutput("sellpriceplot"))),
                             hr(),
                             uiOutput("pricepoints1"),
                             hr(),

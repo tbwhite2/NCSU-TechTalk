@@ -202,7 +202,7 @@ output$pricepoints1 <- renderUI({
       "Not Enough Data To Compare Price History"
     }else{
       
-      h3(paste("Always bid when price is below: ", round(median(storage$priceinfo$price_a) + storage$price_levels[1],0)))
+      h3(paste("Always bid when price is below: ", round(median(storage$priceinfo$price_a) + storage$price_levels[2],0)))
    
       # storage$priceinfo
     }
