@@ -1,7 +1,3 @@
-library(dplyr)
-library(ggplot2)
-
-
 shinyServer(function(input, output, session) {
   
   updateSliderInput(session,"age", min = min(car$VehicleAge),

@@ -1,19 +1,15 @@
 
-library(shiny)
-library(markdown)
-library(shinythemes)
-library(dplyr)
-library(magrittr)
-library(dygraphs)
 
+shinyUI(
 
-shinyUI(navbarPage("Lemon-AID",
-                   tabPanel("Lemon Identification",
-                            column(6,
-                            sliderInput("age", label = ("Vehicle Age"), min = 0, 
-                                        max = 100, value = 50),
+  navbarPage("Lemon-AID",
+             tabPanel("Lemon Identification",
+                      column(6,
+                            sliderInput("age", label = ("Vehicle Age"),
+                                        min = 0, max = 12, value = 0),
                             sliderInput("odo", label = ("Vehicle Mileage"), min = 0, 
                                         max = 100, value = 50),
+
                             selectInput("cartype", label = ("Car Style"), 
                                         choices = list("loading" = 0), 
                                         selected = 0),
@@ -23,14 +19,21 @@ shinyUI(navbarPage("Lemon-AID",
                             selectInput("national", label = ("Nationality of Car"), 
                                         choices = list("loading" = 0), 
                                         selected = 0),
+
                             radioButtons("door", label = ("Number of Doors"),
                                          choices = list("2" = "2D", "4" = "4D", "Other" = "O"), 
                                          selected = "2D"),
+      
                             selectInput("auction", label = ("Auction Location"), 
                                         choices = list("loading" = 0), 
                                         selected = 0),
                          
-                            actionButton("gogo",label = "Submit Car")),
+ 
+
+                            actionButton("gogo",label = "Submit Car")
+
+                                    )
+,
                             column(6,
                                    sliderInput("tolerance", label = h3("Lemon Tolerance"), min = 0, 
                                                max = 100, value = 50),
@@ -46,18 +49,23 @@ shinyUI(navbarPage("Lemon-AID",
                          
                             
                             
-                   ),
+                  ),
                    tabPanel("Auction Payment Amount",
                             fluidRow(
                               column(6,h3("Historic Price Density Plot")),
-                              column(6,h3("Historic Margin Densisty Plot"))),
+                              column(6,h3("Historic Margin Density Plot"))
+                              ),
                            fluidRow(
                              column(6,uiOutput("buypriceplot")),
-                             column(6,uiOutput("sellpriceplot"))),
+                             column(6,uiOutput("sellpriceplot"))
+                             ),
                             hr(),
                             uiOutput("pricepoints1"),
                             hr(),
                             uiOutput("pricepoints2"),
-                            hr(),
-                            uiOutput("pricepoints3"))
-))
+                            hr()
+                            ,
+                            uiOutput("pricepoints3")
+                            )
+)
+)

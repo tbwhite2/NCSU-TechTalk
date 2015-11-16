@@ -1,11 +1,12 @@
 library(dplyr)
 library(readr)
 library(stringr)
-library(randomForest)
 library(dummies)
-library(leaps)
-library(glmnet)
-#https://www.kaggle.com/c/DontGetKicked/data?test.csv
+library(shiny)
+library(markdown)
+library(shinythemes)
+library(ggplot2)
+
 car<-read_csv("training.csv",col_types =paste(rep("c",34),collapse = ""))
 car[car == "NULL"]<-NA
 
@@ -47,7 +48,6 @@ colnames(car_mod)<-str_replace_all(names(car_mod),"\\s","")
 set.seed(888)
 car_training<-car_mod %>% 
   sample_frac(.6,replace=F)
-# filter(PurchDate<= as.Date("2010-01-01"))
 
 car_test<-car_mod %>% 
   filter(RefId %in% car_training$RefId[!(car_mod$RefId %in% car_training$RefId)])
@@ -56,7 +56,7 @@ f <- "IsBadBuy ~ VehOdo + VehicleAge + doors2D + engine2.4L + engine3.8L +
   engine4.0L + engine5.4L + engineother + AuctionMANHEIM"
 
 out_reg<-glm(f,car_training,family="binomial")
-# summary(out_reg)
+
 car_test_log<-car_test
 car_test_log$prediction<-predict(out_reg, newdata = car_test, type = "response")
 
@@ -70,8 +70,6 @@ f<-"margin ~ VehOdo + VehicleAge + NationalityAMERICAN + NationalityOTHERASIAN +
 
 lm<-lm(f, data= car_mod)
 
-# plm<-predict(lm,newdata = car_mod,interval = "prediction", level = .99) %>% data.frame()
-# car_mod<-bind_cols(car_mod,plm)
 rm(out_reg, car_test, car_training,f)
 
 car<-car %>% 
