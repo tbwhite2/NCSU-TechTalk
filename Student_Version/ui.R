@@ -4,6 +4,7 @@ shinyUI(
 fluidPage(
                       # column(6,
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~#Add age inputs here
+                            
 #                             sliderInput("odo", label = ("Vehicle Mileage"), min = 0, 
 #                                         max = 100, value = 50),
 

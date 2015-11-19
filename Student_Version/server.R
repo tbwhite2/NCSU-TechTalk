@@ -1,4 +1,6 @@
 shinyServer(function(input, output, session) {
+
+  
 ####################################################################################################
 ## UI Input Changes
 ####################################################################################################
@@ -12,26 +14,26 @@ shinyServer(function(input, output, session) {
 #   
 #   updateSelectInput(session,"engine",
 #                     choices = unique(car$engine)[order(as.numeric(
-#                       str_extract(unique(car$engine),"[0-9].[0-9]")))],selected = 1)
+#                       str_extract(unique(car$engine),"[0-9].[0-9]")))],selected = "2.0L")
 #   
 #   updateSelectInput(session,"auction",
-#                     choices = unique(car$Auction),selected = 1)
+#                     choices = unique(car$Auction),selected = "MANHEIM")
 #   
 #   updateSelectInput(session,"cartype",
-#                     choices = unique(car$cartype),selected = 1)
+#                     choices = unique(car$cartype),selected = "SEDAN")
 #   
 #   updateSelectInput(session,"national",
-#                     choices = unique(car$Nationality),selected = 1)
+#                     choices = unique(car$Nationality),selected = "AMERICAN")
 ####################################################################################################
 ## Server Data Manipulation
 ####################################################################################################  
 
   
-#Allows for objects to be stored across observe statements
+##Allows for objects to be stored across observe statements
 # storage = reactiveValues()
   
   
-#Creates new hypothetical car to run through the model
+##Creates new hypothetical car to run through the model
 ##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Add Observe Event Here
 # observe({
 # if(input$auction != "" && 
@@ -53,6 +55,7 @@ shinyServer(function(input, output, session) {
 #     mutate(engine3.5L = ifelse("3.5L" == input$engine,1,0)) %>%
 #     mutate(AuctionMANHEIM = ifelse("MANHEIM" == input$auction,1,0)) %>% 
 #     mutate(AuctionOTHER = ifelse("OTHER" == input$auction,1,0)) %>%
+#     mutate(AuctionADESA = ifelse("ADESA" == input$auction,1,0)) %>%
 #     mutate(doors4D = ifelse("4D" == input$door,1,0)) %>% 
 #     mutate(doors2D = ifelse("2D" == input$door,1,0)) %>% 
 #     mutate(doorsother  = ifelse("O" == input$door,1,0)) %>% 
