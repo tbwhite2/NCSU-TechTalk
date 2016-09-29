@@ -1,0 +1,4 @@
+Talk about popularity of R
+Talk about RStudio
+Talk about shiny
+End with demo of 'martha stewart' app?
